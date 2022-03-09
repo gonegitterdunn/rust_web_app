@@ -1,0 +1,13 @@
+curl -i -X POST http://127.0.0.1:8000/item/create/doing%20good
+
+curl -i -X GET http://127.0.0.1:8000/item/get
+
+curl -i \
+-d '{"title": "swimming", "status": "done"}' \
+-H "Content-Type: application/json" \
+-X PUT http://127.0.0.1:8000/item/edit
+
+curl -i \
+-d '{"title": "swimming", "status": "pending"}' \
+-H "Content-Type: application/json" \
+-X PUT http://127.0.0.1:8000/item/edit
