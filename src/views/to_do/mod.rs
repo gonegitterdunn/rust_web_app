@@ -1,14 +1,19 @@
+use super::path::Path;
 use actix_web::web;
 mod create;
-use super::path::Path;
+mod edit;
+mod get;
+mod utils;
 
-pub fn item_factory(app: &mut web::ServiceConfig) {
-  let base_path: Path = Path {
-    path_prefix: String::from("/item"),
-  };
+pub fn to_do_item_factory(app: &mut web::ServiceConfig) {
+  let to_do_path = Path::new("/item");
 
   app.route(
-    &base_path.define_path("/create/{title}"),
+    &to_do_path.define("/create/{title}"),
     web::post().to(create::create),
   );
+
+  app.route(&to_do_path.define("/get"), web::get().to(get::get));
+
+  app.route(&to_do_path.define("/edit"), web::put().to(edit::edit));
 }

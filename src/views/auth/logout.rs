@@ -1,3 +1,3 @@
 pub async fn logout() -> String {
-  format!("Logout view")
+  String::from("Logout view page...")
 }

@@ -7,14 +7,12 @@ pub enum ItemTypes {
   Pending(Pending),
 }
 
-pub fn to_do_factory(input_type: &str, input_title: &str) -> Result<ItemTypes, &'static str> {
-  if input_type == "done" {
-    let done = Done::new(input_title);
-    Ok(ItemTypes::Done(done))
-  } else if input_type == "pending" {
-    let pending = Pending::new(input_title);
-    Ok(ItemTypes::Pending(pending))
+pub fn to_do_factory(item_type: &str, item_title: &str) -> Result<ItemTypes, &'static str> {
+  if item_type == "pending" {
+    Ok(ItemTypes::Pending(Pending::new(item_title)))
+  } else if item_type == "done" {
+    Ok(ItemTypes::Done(Done::new(item_title)))
   } else {
-    Err("unaccepted type")
+    Err("Type not recognized")
   }
 }

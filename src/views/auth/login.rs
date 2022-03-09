@@ -1,3 +1,3 @@
 pub async fn login() -> String {
-  format!("Login view")
+  String::from("Login view page...")
 }

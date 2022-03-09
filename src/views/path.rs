@@ -1,9 +1,14 @@
 pub struct Path {
-  pub path_prefix: String,
+  pub prefix: String,
 }
 
 impl Path {
-  pub fn define_path(&self, following_path: &str) -> String {
-    self.path_prefix.to_owned() + &following_path
+  pub fn new(input_prefix: &str) -> Self {
+    Self {
+      prefix: input_prefix.to_string(),
+    }
+  }
+  pub fn define(&self, following_path: &str) -> String {
+    self.prefix.to_owned() + following_path
   }
 }

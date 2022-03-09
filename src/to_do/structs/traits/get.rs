@@ -2,15 +2,15 @@ use serde_json::value::Value;
 use serde_json::Map;
 
 pub trait Get {
-  fn get(&self, title: &String, state: &Map<String, Value>) {
-    let item: Option<&Value> = state.get(title);
+  fn get(&self, title: &str, state: &Map<String, Value>) {
+    let value: Option<&Value> = state.get(title);
 
-    match item {
+    match value {
       Some(result) => {
-        println!("\n\nItem: {}", title);
+        println!("\n\nItem: {}\n\n", title);
         println!("Status: {}\n\n", result);
       }
-      None => println!("item: {} was not found", title),
+      None => println!("Item: {} wasn't found", title),
     }
   }
 }

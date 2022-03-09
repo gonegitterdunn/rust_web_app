@@ -5,13 +5,14 @@ use super::traits::edit::Edit;
 use super::traits::get::Get;
 
 pub struct Pending {
-  pub super_struct: Base,
+  pub base_struct: Base,
 }
 
 impl Pending {
-  pub fn new(input_title: &str) -> Pending {
-    let base = Base::new(input_title, "pending");
-    Pending { super_struct: base }
+  pub fn new(input_title: &str) -> Self {
+    Self {
+      base_struct: Base::new(input_title, "pending"),
+    }
   }
 }
 

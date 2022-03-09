@@ -7,14 +7,18 @@ use crate::state::read_file;
 use crate::to_do;
 
 pub async fn create(req: HttpRequest) -> String {
+  println!("in create");
   let state: Map<String, Value> = read_file("./state.json");
 
-  let title: String = req.match_info().get("title").unwrap().to_string();
+  let title: &str = req.match_info().get("title").unwrap();
 
-  let title_reference: String = title.clone();
+  let title_reference = title;
 
-  let item = to_do::to_do_factory(&"pending", title.as_str()).expect("create ");
+  let item = to_do::to_do_factory("pending", title).expect("create ");
 
+  // add the to do item from the state.json
   process_input(item, "create", &state);
-  format!("{} created", title_reference)
+
+  // return a message to viewer
+  return format!("{} created", title_reference);
 }
