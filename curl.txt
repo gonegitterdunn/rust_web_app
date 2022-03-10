@@ -10,4 +10,11 @@ curl -i \
 curl -i \
 -d '{"title": "swimming", "status": "pending"}' \
 -H "Content-Type: application/json" \
+-H "user-token: token" \
+-X PUT http://127.0.0.1:8000/item/edit
+
+curl -i \
+-d '{"title": "swimming", "status": "pending"}' \
+-H "Content-Type: application/json" \
+-H "user-token: ro" \
 -X PUT http://127.0.0.1:8000/item/edit
