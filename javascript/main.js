@@ -6,14 +6,16 @@ function renderItems(items, processType, elementId, processFunction) {
     let title = items[i]['title'];
     let placeholderId = processType + '-' + title.replaceAll(' ', '-');
     placeholder +=
-      '<div>' +
+      '<div class="itemContainer">' +
+      '<p>' +
       title +
-      '<button ' +
+      '</p>' +
+      '<div class="actionButton" ' +
       'id="' +
       placeholderId +
       '">' +
       processType +
-      '</button>' +
+      '</div>' +
       '</div>';
     itemsMeta.push({ id: placeholderId, title: title });
   }
@@ -46,6 +48,12 @@ function apiCall(url, method) {
         'doneItems',
         deleteItem
       );
+      document.getElementById('completeNum').innerHTML = JSON.parse(
+        this.responseText
+      )['done_items_count'];
+      document.getElementById('pendingNum').innerHTML = JSON.parse(
+        this.responseText
+      )['pending_items_count'];
     }
   });
   xhr.open(method, url);
