@@ -1,6 +1,5 @@
 use super::path::Path;
 use actix_web::web;
-
 mod content_loader;
 mod items;
 
