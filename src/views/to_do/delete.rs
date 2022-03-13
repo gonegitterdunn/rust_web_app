@@ -10,14 +10,14 @@ use crate::state::read_file;
 use crate::to_do::to_do_factory;
 
 pub async fn delete(to_do_item: web::Json<ToDoItem>) -> HttpResponse {
-  let state: Map<String, Value> = read_file("./state.json");
+    let state: Map<String, Value> = read_file("./state.json");
 
-  let title = to_do_item.title.as_str();
-  let status = to_do_item.status.as_str();
+    let title = to_do_item.title.as_str();
+    let status = to_do_item.status.as_str();
 
-  match to_do_factory(status, title) {
-    Err(_item) => return HttpResponse::BadRequest().json(format!("{} not accepted", status)),
-    Ok(item) => process_input(item, "delete", &state),
-  }
-  HttpResponse::Ok().json(return_state())
+    match to_do_factory(status, title) {
+        Err(_item) => return HttpResponse::BadRequest().json(format!("{} not accepted", status)),
+        Ok(item) => process_input(item, "delete", &state),
+    }
+    HttpResponse::Ok().json(return_state())
 }
