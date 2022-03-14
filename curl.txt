@@ -19,3 +19,9 @@ curl -i \
 -H "Content-Type: application/json" \
 -H "user-token: ro" \
 -X PUT http://127.0.0.1:8000/item/edit
+
+curl -i \
+-d '{"name": "max", "email": "max@email.com", "password": "test"}' \
+-H "Content-Type: application/json" \
+-H "user-token: ro" \
+-X POST http://127.0.0.1:8000/user/create

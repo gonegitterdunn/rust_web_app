@@ -21,7 +21,7 @@ pub async fn create(req: HttpRequest) -> impl Responder {
     .unwrap();
 
   if items.is_empty() {
-    let new_post = NewItem::new(title_ref);
+    let new_post = NewItem::new(title_ref, 1);
     let _ = diesel::insert_into(to_do)
       .values(&new_post)
       .execute(&connection);
