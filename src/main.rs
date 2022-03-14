@@ -5,10 +5,10 @@ extern crate dotenv;
 use actix_service::Service;
 use actix_web::{App, HttpServer};
 
+mod data_models;
 mod database;
 mod database_schema;
 mod json_serialization;
-mod models;
 mod processes;
 mod state;
 mod to_do;
