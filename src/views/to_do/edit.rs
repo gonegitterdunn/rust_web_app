@@ -3,9 +3,9 @@ use diesel::prelude::*;
 use to_do::dsl::*;
 
 use crate::database::establish_connection;
-use crate::database_schema::to_do;
 use crate::diesel;
 use crate::json_serialization::to_do_item::ToDoItem;
+use crate::schema::to_do;
 
 use super::utils::return_state;
 

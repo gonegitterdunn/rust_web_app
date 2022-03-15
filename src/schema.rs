@@ -11,9 +11,9 @@ table! {
     users (id) {
         id -> Int4,
         username -> Varchar,
-        email -> Varchar,
         password -> Varchar,
-        uuid -> Varchar,
+        email -> Varchar,
+        unique_id -> Varchar,
     }
 }
 

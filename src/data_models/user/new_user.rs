@@ -4,27 +4,27 @@ use bcrypt::{hash, DEFAULT_COST};
 use diesel::Insertable;
 use uuid::Uuid;
 
-use crate::database_schema::users;
+use crate::schema::users;
 
 #[derive(Insertable, Clone)]
 #[table_name = "users"]
 pub struct NewUser {
   pub username: String,
-  pub email: String,
   pub password: String,
-  pub uuid: String,
+  pub email: String,
+  pub unique_id: String,
 }
 
 impl NewUser {
-  pub fn new(username: &str, email: &str, password: &str) -> Self {
-    let hashed_password = hash(password, DEFAULT_COST).unwrap();
+  pub fn new(username: String, password: String, email: String) -> Self {
+    let hashed_password = hash(password.as_str(), DEFAULT_COST).unwrap();
     let uuid = Uuid::new_v4().to_string();
 
     Self {
-      username: username.to_string(),
-      email: email.to_string(),
+      username,
       password: hashed_password.to_string(),
-      uuid,
+      email,
+      unique_id: uuid,
     }
   }
 }

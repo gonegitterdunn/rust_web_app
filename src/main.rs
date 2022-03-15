@@ -5,11 +5,12 @@ extern crate dotenv;
 use actix_service::Service;
 use actix_web::{App, HttpServer};
 
+mod auth;
 mod data_models;
 mod database;
-mod database_schema;
 mod json_serialization;
 mod processes;
+mod schema;
 mod state;
 mod to_do;
 mod views;
@@ -21,7 +22,7 @@ async fn main() -> std::io::Result<()> {
             // middleware for checking token
             .wrap_fn(|req, srv| {
                 if req.path().contains("/item/") {
-                    match views::token::process_token(&req) {
+                    match auth::process_token(&req) {
                         Ok(_token) => println!("the token is passable"),
                         Err(message) => println!("token error: {}", message),
                     }

@@ -6,7 +6,7 @@ use to_do::dsl::*;
 
 use crate::data_models::item::item::Item;
 use crate::database::establish_connection;
-use crate::database_schema::to_do;
+use crate::schema::to_do;
 
 pub fn return_state() -> ToDoItems {
     let connection = establish_connection();

@@ -4,9 +4,11 @@ curl -i -X POST http://127.0.0.1:8000/item/create/doing%20good
 curl -i -X GET http://127.0.0.1:8000/item/get
 
 curl -i \
--d '{"title": "swimming", "status": "done"}' \
+-d '{"title": "swimming", "status": "pending"}' \
 -H "Content-Type: application/json" \
 -X PUT http://127.0.0.1:8000/item/create
+
+ITEM/EDIT
 
 curl -i \
 -d '{"title": "swimming", "status": "pending"}' \
@@ -20,8 +22,19 @@ curl -i \
 -H "user-token: ro" \
 -X PUT http://127.0.0.1:8000/item/edit
 
+USER/CREATE
+
 curl -i \
--d '{"name": "max", "email": "max@email.com", "password": "test"}' \
+-d '{"username": "lucy", "password": "test", "email": "lucy@email.com"}' \
 -H "Content-Type: application/json" \
 -H "user-token: ro" \
 -X POST http://127.0.0.1:8000/user/create
+
+
+AUTH/LOGIN
+
+curl -i \
+-d '{"username": "lucy", "password": "testt"}' \
+-H "Content-Type: application/json" \
+-H "user-token: ro" \
+-X GET http://127.0.0.1:8000/auth/login

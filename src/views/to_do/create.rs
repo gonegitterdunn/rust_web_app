@@ -5,7 +5,7 @@ use to_do::dsl::*;
 use crate::data_models::item::item::Item;
 use crate::data_models::item::new_item::NewItem;
 use crate::database::establish_connection;
-use crate::database_schema::to_do;
+use crate::schema::to_do;
 use crate::diesel;
 
 use super::utils::return_state;

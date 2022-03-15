@@ -4,20 +4,20 @@
 CREATE TABLE users (
   id SERIAL PRIMARY KEY,
   username VARCHAR NOT NULL,
-  email VARCHAR NOT NULL,
   password VARCHAR NOT NULL,
-  uuid VARCHAR NOT NULL,
+  email VARCHAR NOT NULL,
+  unique_id VARCHAR NOT NULL,
   UNIQUE (email),
   UNIQUE (username)
 );
 -------------
 ----- 2 -----
 -------------
-INSERT INTO users (username, email, password, uuid)
+INSERT INTO users (username, password, email, unique_id)
 VALUES (
     'placeholder',
-    'placeholder email',
     'placeholder password',
+    'placeholder email',
     'placeholder unique id'
   );
 -------------

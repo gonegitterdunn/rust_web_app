@@ -1,8 +1,7 @@
 mod create;
 
-use actix_web::web;
-
 use super::path::Path;
+use actix_web::web;
 
 pub fn user_factory(app: &mut web::ServiceConfig) {
   let user_path = Path::new("/user");

@@ -1,4 +1,4 @@
-use crate::database_schema::to_do;
+use crate::schema::to_do;
 
 #[derive(Insertable)]
 #[table_name = "to_do"]
